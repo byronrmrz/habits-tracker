@@ -15,10 +15,11 @@ router.get('/habits', async (req,res) => {
   }
 });
 
-router.post('/habits',async (req,res) => {
+router.post('/habits',async (req,res,next) => {
 try{
   const {title, description} = req.body;
   const habit = new Habit({title, description});
+  console.log('paso al try')
   await habit.save();
   res.json(habit);
 }catch{
@@ -28,7 +29,7 @@ try{
 
 router.delete( '/habits/:id', async (req, res) => {
   try{
-    await Habit.findByIdAndRemove(req.params.id);
+    await Habit.findByIdAndDelete(req.params.id);
     res.json({message: 'Habit deleted successfully'});
   }catch{
     res.status(500).json({message: 'Habit not found'});
