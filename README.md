@@ -11,6 +11,7 @@ Este es un proyecto para crear una aplicación que permita registrar nuevos háb
 - **MongoDB**: Base de datos NoSQL para almacenar los datos de los hábitos.
 - **Mongoose**: Librería para modelar datos de MongoDB con Node.js.
 
+# Backend:
 ## Instrucciones para levantar el proyecto
 
 1. **Clonar el repositorio:**
@@ -32,7 +33,7 @@ PORT=3001
 npm start
 
 # FRONTEND:
-
+## Instrucciones para levantar el proyecto
 5. **Crear proyecto con Nextjs**
 Verificar que node.js esté einstalado y utilizar el comando: 
    ```bash
