@@ -31,7 +31,8 @@ PORT=3001
 4. **Levantar el servidor:**
 npm start
 
-**FRONTEND:**
+# FRONTEND:
+
 5. **Crear proyecto con Nextjs**
 Verificar que node.js esté einstalado y utilizar el comando: 
    ```bash
