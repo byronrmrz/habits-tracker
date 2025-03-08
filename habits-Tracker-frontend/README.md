@@ -31,3 +31,26 @@ PORT=3001
 4. **Levantar el servidor:**
 npm start
 
+**FRONTEND:**
+5. **Crear proyecto con Nextjs**
+Verificar que node.js esté einstalado y utilizar el comando: 
+   ```bash
+   create-next-app
+   ```
+Crear una nueva aplicación, ponerle nombre y seleccionar todas las configuraciones necesarias.
+
+6. **Añadir Redux:**
+   Desde chrome, añadir la extensión de Redux Devtools
+   
+8. **Setear todas las configuraciones para envolver redux y manejar los estados**
+   
+10. **Arrancar el proyecto**
+
+    ```bash
+    npm run dev
+
+
+
+
+
+
