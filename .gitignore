@@ -7,25 +7,27 @@ pnpm-debug.log*
 pnpm-error.log*
 *.log
 
-# Next.js build files
-out/
-.vercel/
-dist/
-build/
-.next/
-.next/**
-.next/server/*.json
-
-# Ignorar la carpeta .next (archivos generados por Next.js)
+# Ignorar archivos generados por Next.js
 .next/
 .next/**
 
-# Ignorar archivos específicos generados dentro de .next
+# Ignorar archivos específicos de Next.js
 .next/server/*.json
 .next/server/*.js
 .next/static/
 .next/trace
 
+# Ignorar los archivos de manifest
+**/next-font-manifest.json
+**/next-font-manifest.js
+**/[root of the server]*.css
+**/[root of the server]*.css.map
+**/app_globals*.css
+**/app_globals*.css.map
+
+# Ignorar package-lock.json en frontend y backend
+frontend/package-lock.json
+backend/package-lock.json
 # Next.js specific files
 *.map
 *.next/
