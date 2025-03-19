@@ -1,46 +1,89 @@
-# Node modules
+# Node.js dependencies
 node_modules/
-
-# Archivos de log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+pnpm-error.log*
+*.log
 
-# Archivos del entorno
+# Ignorar archivos generados por Next.js
+.next/
+.next/**
+
+# Ignorar archivos específicos de Next.js
+.next/server/*.json
+.next/server/*.js
+.next/static/
+.next/trace
+
+# Ignorar los archivos de manifest
+**/next-font-manifest.json
+**/next-font-manifest.js
+**/[root of the server]*.css
+**/[root of the server]*.css.map
+**/app_globals*.css
+**/app_globals*.css.map
+
+# Ignorar package-lock.json en frontend y backend
+frontend/package-lock.json
+backend/package-lock.json
+# Next.js specific files
+*.map
+*.next/
+*.trace
+.next/trace
+.next/server/app-paths-manifest.json
+.next/server/next-font-manifest.json
+.next/server/middleware-manifest.json
+.next/server/react-loadable-manifest.json
+.next/server/routes-manifest.json
+.next/server/build-manifest.json
+.next/server/server.js.nft.json
+.next/server/server.js
+.next/server/server.js.map
+
+# Tailwind CSS build artifacts
+*.css.map
+
+# Next.js environment variables
 .env
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
 
-# Directorios de compilación
-dist/
-build/
+# Build artifacts
+coverage/
+*.lock
 
-# Archivos del sistema operativo
+# Editor & OS-specific files
 .DS_Store
 Thumbs.db
-
-# Archivos de IDEs y editores de texto
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# Archivos de depuración
-debug/
-.vscode/
+# TypeScript build files
+*.tsbuildinfo
 
-# Archivos generados por NPM
-package-lock.json
-yarn.lock
+# Redux Persist storage (if using local storage persistence)
+reduxPersist/
 
-# Archivos temporales de OS
-*.bak
-*.tmp
-
-# Directorios y archivos relacionados con MongoDB
-.mongo/
-
-# Si utilizas alguna base de datos local
+# MongoDB, SQLite, MySQL, PostgreSQL
 *.sqlite
+*.sqlite-wal
+*.sqlite-shm
 *.db
+*.db-journal
+dump.rdb
+.dynamodb/
 
-# Archivos de cobertura de pruebas
-coverage/
+# Logs & Debug
+logs
+*.log
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+debug.log

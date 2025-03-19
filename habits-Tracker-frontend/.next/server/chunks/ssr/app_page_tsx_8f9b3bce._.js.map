@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/byronramirezrodriguez/Documents/GALILEO/prograAvanzada/habits-tracker/habits-tracker-frontend/app/page.tsx"],"sourcesContent":["'use client'\nimport { fetchHabitsThunk } from \"@/features/habit/habitSlice\";\nimport Image from \"next/image\";\nimport { useEffect } from \"react\";\nimport { useSelector, useDispatch } from \"react-redux\";\nimport { AppState, AppDispatch } from \"../Redux/store\";\n\nexport default function Home() {\n  const dispatch = useDispatch<AppDispatch>();\n  useSelector ((state: AppState) => state.habit);\n  useEffect(() => {\n    dispatch(fetchHabitsThunk());\n    }, [dispatch]);\n  return (\n    <div className=\"grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]\">\n     \n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;AACA;AAEA;AACA;AAJA;;;;;AAOe,SAAS;IACtB,MAAM,WAAW,CAAA,GAAA,yJAAA,CAAA,cAAW,AAAD;IAC3B,CAAA,GAAA,yJAAA,CAAA,cAAW,AAAD,EAAG,CAAC,QAAoB,MAAM,KAAK;IAC7C,CAAA,GAAA,qMAAA,CAAA,YAAS,AAAD,EAAE;QACR,SAAS,CAAA,GAAA,+HAAA,CAAA,mBAAgB,AAAD;IACxB,GAAG;QAAC;KAAS;IACf,qBACE,8OAAC;QAAI,WAAU;;;;;;AAInB","debugId":null}}]
+}
