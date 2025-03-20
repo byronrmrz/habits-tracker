@@ -93,6 +93,8 @@
   :root, :host {
     --font-sans: var(--font-geist-sans);
     --font-mono: var(--font-geist-mono);
+    --color-red-500: oklch(.637 .237 25.331);
+    --color-green-500: oklch(.723 .219 149.579);
     --color-blue-500: oklch(.623 .214 259.815);
     --color-black: #000;
     --color-white: #fff;
@@ -298,6 +300,10 @@
     margin-bottom: calc(var(--spacing) * 4);
   }
 
+  .block {
+    display: block;
+  }
+
   .flex {
     display: flex;
   }
@@ -411,6 +417,14 @@
 
   .text-black {
     color: var(--color-black);
+  }
+
+  .text-green-500 {
+    color: var(--color-green-500);
+  }
+
+  .text-red-500 {
+    color: var(--color-red-500);
   }
 
   .text-white {
