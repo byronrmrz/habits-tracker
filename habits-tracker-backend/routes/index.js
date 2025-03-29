@@ -1,33 +1,66 @@
 var express = require("express");
 var router = express.Router();
 const Habit = require("../models/Habit");
-/* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
-});
+const jwt = require("jsonwebtoken");
+const mongoose  = require('mongoose');
 
-router.get("/habits", async (req, res) => {
+const authenticateToken = ( req, res, next ) => {
+  const token = req.header('Authorization');
+  if (!token) return res.status(401).send('Acceso denegado, no se proporcionó token');
   try {
-    const habits = await Habit.find();
+    const tokenWithoutBearer = token.replace("Bearer","").trim();;
+    const verified= jwt.verify(tokenWithoutBearer, process.env.SECRET_KEY);
+    req.user = verified;
+    next();
+  }catch(error){
+    console.error('el error: ',error);
+    return res.status(403).send('Acceso denegado, token invalido o expirado');
+  }
+}
+
+router.get("/habits", authenticateToken, async (req, res) => {
+  try {
+
+    //NOTE - =================== =================== =================== =================== =================== 
+    //NOTE - 1. Ingeniero: hice algunas modificaciones porque no me funcionaba el código
+    //NOTE - 2. en vez de declarar el userId asi: req.user && req.user.userId lo declaré como esta abajo
+    //NOTE - 3. Deje de usar ObjectId(userId) porque me decía que estaba deprecado, agradezco tomar en cuenta que por esa
+    // razón no lo hice como usted lo sugirió
+    //NOTE - =================== =================== =================== =================== =================== 
+
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+    let userId = req.user.id;
+    console.log('userId',userId)
+    const habits = await Habit.find({ 'userId': new mongoose.Types.ObjectId(userId) });
     res.json(habits);
   } catch {
     res.status(500).json({ message: "Error fetching habits" });
   }
 });
 
-router.post("/habits", async (req, res) => {
+router.post("/habits",authenticateToken, async (req, res) => {
   try {
     const { title, description } = req.body;
-    const habit = new Habit({ title, description });
+    console.log( req.body);
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+    let userId = req.user.id;
+    console.log('userId',userId)
+    // let userId= req.user.userId;
+    // userId = new mongoose.Types.ObjectId(userId);
+    const habit = new Habit({ title, description, userId });
     await habit.save();
     res.json(habit);
   } catch (error) {
-    console.log("[DEBUG]error", error);
+    console.error("[DEBUG] Error creating habit:", error);
     res.status(400).json({ message: "Invalid request" });
   }
 });
 
-router.delete("/habits/:id", async (req, res) => {
+router.delete("/habits/:id", authenticateToken, async (req, res) => {
   console.log(req.params.id);
 
   try {
@@ -39,7 +72,7 @@ router.delete("/habits/:id", async (req, res) => {
   }
 });
 
-router.patch("/habits/markasdone/:id", async (req, res) => {
+router.patch("/habits/markasdone/:id",authenticateToken, async (req, res) => {
   try {
     const habit = await Habit.findById(req.params.id);
     habit.lastDone = new Date();
