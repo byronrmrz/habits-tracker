@@ -328,10 +328,6 @@
     display: flex;
   }
 
-  .h-4 {
-    height: calc(var(--spacing) * 4);
-  }
-
   .max-h-\[400px\] {
     max-height: 400px;
   }
